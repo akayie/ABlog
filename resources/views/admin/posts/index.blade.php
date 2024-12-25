@@ -22,8 +22,7 @@
                                         <tr>
                                             <th>No</th>
                                             <th>Title</th>
-                                            <!-- <th>Description</th> -->
-                                            <th>Category</th>
+                                            <th>Image</th>                                            <th>Category</th>
                                             <th>#</th>
                                         </tr>
                                     </thead>
@@ -31,7 +30,7 @@
                                         <tr>
                                             <th>No</th>
                                             <th>Title</th>
-                                            <!-- <th>Description</th> -->
+                                           <th>Image</th>
                                             <th>Category</th>
                                             <th>#</th>
                                         </tr>
@@ -44,12 +43,12 @@
                                         <tr>
                                             <td>{{$i++}}</td>
                                             <td> {{$post->title}}</td>
-                                            <!-- <td> {{$post->description}}</td> -->
+                                            <td> {{$post->image}}</td>
                                             <td> {{$post->category_id}}</td>
                                             <td>
-                                                <a href="" class="btn btn-sm btn-warning">Edit</a>
-                                                <a href="" class="btn  btn-sm btn-danger">Delete</a>
-                                            </td>   
+                                            <a href="{{route('backend.posts.edit',$post->id)}}"class="btn btn-sm btn-warning">Edit</a>
+                                             <button type="button" class="btn btn-sm btn-danger delete" data-id="{{$post->id}}">Delete</button>
+                                       </td>   
                                         </tr>
                                     @endforeach
                                     </tbody>

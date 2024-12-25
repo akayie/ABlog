@@ -9,7 +9,7 @@ class FrontController extends Controller
 {
    public function blog()
    {
-      $posts = Post::orderBy('id','DESC')->paginate(4);
+      $posts = Post::orderBy('id','DESC')->paginate(12);
       //var_dump($posts);
       return view('front.blog', compact('posts'));
    }

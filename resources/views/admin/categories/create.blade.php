@@ -14,7 +14,7 @@
                         <div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-table me-1"></i>
-                                Posts List
+                                Categories  List
                             </div>
                             <div class="card-body">
                                 <form action="{{route('backend.categories.store')}}" method="post" enctype="multipart/form-data">
@@ -22,11 +22,7 @@
                                         
                                     <div class="col-md-12 mb-3">
                                             <label for="name" class="form-label">Category</label>
-                                            <select class="form-select form-select-sm" aria-label="name" name="name">
-                                            <option selected>Choose Category</option>
-                                            @foreach($categories as $category)
-                                                <option value="{{$category->id}}">{{$category->name}}</option>
-                                            @endforeach
+                                            <input type="text" class="form-control" id="name" placeholder="" name="name">
                                             </select>
                                     </div>
 
