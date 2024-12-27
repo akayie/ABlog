@@ -45,7 +45,7 @@ class PostController extends Controller
             $posts->image = "/images/posts/".$file_name; //upload to database
         }
 
-        $items->save();
+        $posts->save();
         return redirect()->route('backend.posts.index');
     }
 

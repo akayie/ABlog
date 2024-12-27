@@ -5,14 +5,28 @@
         <header class="py-5 bg-light border-bottom mb-4">
             <div class="container">
                 <div class="text-center my-5">
-                    <h1 class="fw-bolder">Welcome to Blog Home!</h1>
-                    <p class="lead mb-0">A Bootstrap 5 starter layout for your next blog homepage</p>
+                    <h1 class="fw-bolder">A Blog</h1>
+                    <p class="lead mb-0">My next blog homepage</p>
                 </div>
             </div>
         </header>
         <!-- Page content-->
         <div class="container">
-           
+        <div class="container">
+            <div class="row">
+                <!-- Blog entries-->
+                <div class="col-lg-8">
+                    <!-- Featured blog post-->
+                    <div class="card mb-4">
+                  
+                        <a href="{{ route('post', '$id') }}"><img class="card-img-top" src="{{ route('post', 'image') }}" alt="..." /></a>
+                        <div class="card-body">
+                            <div class="small text-muted">{{ route('post', 'timestamp') }}</div>
+                            <h2 class="card-title">{{ route('post', 'title') }}</h2>
+                            <p class="card-text">{{ route('post', 'description') }}</p>
+                            <a class="btn btn-primary" href="{{ route('post', '$id') }}">Read more →</a>
+                        </div>
+                    </div>
                     <!-- Nested row for non-featured blog posts-->
                     <div class="row">
                         @foreach($posts as $post)
@@ -21,7 +35,7 @@
                             <div class="card mb-4">
                                 <a href="#!"><img class="card-img-top" src="{{$post->image}}" alt="..." /></a>
                                 <div class="card-body">
-                                    <div class="small text-muted">January 1, 2023</div>
+                                    <div class="small text-muted">{{$post->timestamp}}</div>
                                     <h2 class="card-title h4">{{$post->title}}</h2>
                                     <p class="card-text">{{$post->description}}</p>
                                     <a class="btn btn-primary" href="{{route('post',$post->id)}}">Read more →</a>

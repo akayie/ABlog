@@ -1,64 +1,65 @@
 @extends('layouts.admin')
 @section('content')
+
 <div class="container-fluid px-4">
-                        <div class="my-3">
-                        <h1 class="mt-4 d-inline">Posts</h1>
-                        <a href="{{route('backend.posts.create')}}" class="btn btn-primary float-end">Create Post</a>
-                        </div>
+                    <div class="my-3">
+                        <h1 class="mt-4 d-inline">Users</h1>
+                        <a href="{{route('backend.users.create')}}" class="btn btn-primary float-end" >Create User</a>
+                    </div>
                         <ol class="breadcrumb mb-4">
                             <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
-                            <li class="breadcrumb-item"><a href="{{route('backend.posts.index')}}">Posts</a></li>
-                            <li class="breadcrumb-item"><a href="{{route('backend.posts.create')}}">Create Post</a></li>
+                            <li class="breadcrumb-item"><a href="{{route('backend.users.index')}}">Users</a></li>
+                            <li class="breadcrumb-item"><a href="{{route('backend.users.create')}}">Create User</a></li>
                         </ol>
-                       
+                        
                         <div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-table me-1"></i>
-                                Posts List
+                                Users List
                             </div>
                             <div class="card-body">
                                 <table class="table table-bordered">
                                     <thead>
                                         <tr>
-                                            <th>No</th>
-                                            <th>Title</th>
-                                            <th>Image</th>
-                                            <th>Category</th>
+                                            <th>No.</th>
+                                            <th>Name</th>
+                                            <th>Profile</th>
+                                            <th>Role</th>
                                             <th>#</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
-                                            <th>No</th>
-                                            <th>Title</th>
-                                           <th>Image</th>
-                                            <th>Category</th>
+                                            <th>No.</th>
+                                            <th>Name</th>
+                                            <th>Profile</th>
+                                            <th>Role</th>
                                             <th>#</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
-                                        @php
-                                            $i = 1;
+                                        @php 
+                                            $i=1;
                                         @endphp
-                                        @foreach($posts as $post)
-                                        <tr>
-                                            <td>{{$i++}}</td>
-                                            <td> {{$post->title}}</td>
-                                            <td> {{$post->image}}</td>
-                                            <td> {{$post->category_id}}</td>
-                                            <td>
-                                            <a href="{{route('backend.posts.edit',$post->id)}}"class="btn btn-sm btn-warning">Edit</a>
-                                             <button type="button" class="btn btn-sm btn-danger delete" data-id="{{$post->id}}">Delete</button>
-                                       </td>   
+                                       @foreach($users as $user)
+                                       <tr>
+                                        <td>{{$i++}}</td>
+                                        <td>{{$user->name}}</td> 
+                                        <td><img src="{{$user->profile}}" class="w-25 h-25"/></td>  
+                                        <td>{{$user->role}}</td>                
+                                        <td>
+                                        <a href="{{route('backend.users.edit',$user->id)}}"class="btn btn-sm btn-warning">Edit</a>
+                                             <button type="button" class="btn btn-sm btn-danger delete" data-id="{{$user->id}}">Delete</button>
+                                        </td>
                                         </tr>
-                                    @endforeach
-                                    </tbody>
+                                        @endforeach
+                                   </tbody>
                                 </table>
-                                {{$posts->links()}}
+                                {{$users->links()}}
                             </div>
-                         </div>
+                        </div>
                     </div>
-@endsection
+
 
 <!-- Modal -->
 <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -82,8 +83,6 @@
     </div>
   </div>
 </div>
-                    
-
 @endsection
 @section('script')
 <script>
@@ -92,7 +91,7 @@
         //alert('hello');
             let id=$(this).data('id');
             // console.log(id);
-            $('#deleteForm').attr('action',`categories/${id}`);
+            $('#deleteForm').attr('action',`users/${id}`);
             $('#deleteModal').modal('show');
         })
     })
