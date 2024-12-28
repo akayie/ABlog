@@ -10,12 +10,12 @@ class FrontController extends Controller
 {
    public function blog()
    {
-      $posts = Post::all();
-      $posts = Post::orderBy('id','DESC')->paginate(12);
+      // $posts = Post::all();
+      $posts = Post::orderBy('id','DESC')->paginate(4);
       //var_dump($posts);
-      $feature_posts=post::where('id',$posts)->orderBy('id','DESC')->Limit(1)->first();
+      $feature_post=Post::orderBy('id','DESC')->Limit(1)->first();
 
-      return view('front.blog', compact('posts'));
+      return view('front.blog', compact('posts','feature_post'));
    }
   
 

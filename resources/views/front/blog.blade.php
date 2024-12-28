@@ -18,15 +18,16 @@
                 <div class="col-lg-8">
                     <!-- Featured blog post-->
                     <div class="card mb-4">
-                  
-                        <a href="{{ route('post', '$id') }}"><img class="card-img-top" src="{{ route('post', 'image') }}" alt="..." /></a>
+                  @if($feature_post)
+                       <img class="card-img-top" src="{{ $feature_post->image }}"  class="w-75 h-75" alt="..." /></a>
                         <div class="card-body">
-                            <div class="small text-muted">{{ route('post', 'timestamp') }}</div>
-                            <h2 class="card-title">{{ route('post', 'title') }}</h2>
-                            <p class="card-text">{{ route('post', 'description') }}</p>
-                            <a class="btn btn-primary" href="{{ route('post', '$id') }}">Read more →</a>
+                            <div class="small text-muted">{{$feature_post->created_at }}</div>
+                            <h2 class="card-title">{{$feature_post->title }}</h2>
+                            <p class="card-text">{{$feature_post->description}}</p>
+                            <a class="btn btn-primary" href="{{ route('post',$feature_post->id) }}">Read more →</a>
                         </div>
                     </div>
+                @endif
                     <!-- Nested row for non-featured blog posts-->
                     <div class="row">
                         @foreach($posts as $post)
